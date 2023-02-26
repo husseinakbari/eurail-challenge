@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import "./styles.scss";
 
-import Tabs from "../../components/Tabs";
-import { Contacts } from "../../models/interfaces";
-import { contactServices } from "../../services/contactServices";
-import { createContactList } from "../../utils/global";
-import handleError from "../../utils/handleError";
+import Tabs from "~/components/Tabs";
+import { contactServices } from "~/services/contactServices";
+import { createContactList } from "~/utils/global";
+import handleError from "~/utils/handleError";
+import { Contacts } from "~/models/interfaces";
+
 
 function App() {
   const [contacts, setContacts] = useState<Contacts | null>(null);

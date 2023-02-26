@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 
-import { Contacts } from "../../models/interfaces";
+import { Contacts } from "~/models/interfaces";
 import TabContent from "../TabContent";
 import TabItem from "../TabItem";
 import "./style.scss";

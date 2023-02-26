@@ -9,9 +9,10 @@ import "./styles.scss";
 interface TabContentProps {
   users: User[];
   activeTab: string;
+  isLoading: boolean;
 }
 
-const TabContent: FC<TabContentProps> = ({ users, activeTab }) => {
+const TabContent: FC<TabContentProps> = ({ users, activeTab, isLoading }) => {
   const [selectedUserIndex, setSelectedUserIndex] = useState<number>(-1);
 
   const tabContentClassName = classNames("tab-content", {
@@ -21,6 +22,23 @@ const TabContent: FC<TabContentProps> = ({ users, activeTab }) => {
   useEffect(() => {
     setSelectedUserIndex(-1);
   }, [activeTab]);
+
+  if (isLoading) {
+    return (
+      <div className="tab-content">
+        <ul className="tab-content__list">
+          {Array(10)
+            .fill("")
+            .map((_) => (
+              <li
+                key={generateId()}
+                className="tab-content__list-item--skeleton"
+              />
+            ))}
+        </ul>
+      </div>
+    );
+  }
 
   return (
     <div className={tabContentClassName}>

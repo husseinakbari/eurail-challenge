@@ -5,9 +5,9 @@ import "./styles.scss";
 
 interface TabItemProps {
   label: string;
-  count: number;
-  isActive: boolean;
-  onClick: (key: string) => void;
+  count: number | null;
+  isActive?: boolean;
+  onClick?: (key: string) => void;
 }
 
 const TabItem: FC<TabItemProps> = ({
@@ -22,7 +22,7 @@ const TabItem: FC<TabItemProps> = ({
   });
 
   return (
-    <li className={tabItemClassNames} onClick={() => onClick(label)}>
+    <li className={tabItemClassNames} onClick={() => onClick && onClick(label)}>
       <span className="tabItem__label">{label}</span>
       <span className="tabItem__count">{count}</span>
     </li>

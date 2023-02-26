@@ -32,9 +32,9 @@ function App() {
   return (
     <div className="screen">
       <header>
-        <h4>Contacts List</h4>
+        <h4 className="font-xl">Contacts List</h4>
       </header>
-      <main className="main">
+      <main className="main p-2">
         <Tabs isLoading={isLoading} contacts={contacts} />
       </main>
     </div>

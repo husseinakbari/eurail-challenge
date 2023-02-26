@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import classNames from "classnames";
 
 import { User } from "~/models/interfaces";
-import { generateId } from "~/utils/global";
+import { generateFullname, generateId } from "~/utils/global";
 import UserInfo from "../UserInfo";
 import "./styles.scss";
 
@@ -27,10 +27,12 @@ const TabContent: FC<TabContentProps> = ({ users, activeTab }) => {
       {users.length ? (
         <>
           {selectedUserIndex > -1 && users[selectedUserIndex] && (
-            <UserInfo
-              user={users[selectedUserIndex]}
-              onClose={() => setSelectedUserIndex(-1)}
-            />
+            <div className="tab-content__user-info">
+              <UserInfo
+                user={users[selectedUserIndex]}
+                onClose={() => setSelectedUserIndex(-1)}
+              />
+            </div>
           )}
           <ul className="tab-content__list">
             {users.map((user, index) => (
@@ -41,7 +43,7 @@ const TabContent: FC<TabContentProps> = ({ users, activeTab }) => {
                 })}
                 onClick={() => setSelectedUserIndex(index)}
               >
-                {user.name.first}, {user.name.last}
+                {generateFullname(user)}
               </li>
             ))}
           </ul>

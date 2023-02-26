@@ -1,7 +1,6 @@
-import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 
-const handleError = (error: AxiosError) => {
+const handleError = (error: any) => {
   if (error) {
     if (process.env.NODE_ENV === "development") {
       console.error(error);

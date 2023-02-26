@@ -1,0 +1,10 @@
+@import "../../theme/main.scss";
+
+.tabs {
+  @extend %flex-col;
+  &__bloc {
+    display: grid;
+    align-items: center;
+    grid-auto-flow: column;
+  }
+}

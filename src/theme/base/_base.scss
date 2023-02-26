@@ -4,17 +4,33 @@
   box-sizing: border-box;
 }
 
+html {
+  --background-color: #eee;
+  --primary-color: #353535;
+  --grey-color: #bdc3c7;
+  --white-color: #fff;
+  --green-color: #2ecc71;
+  --red-color: #c2391d
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--white-color);
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+p,
+span {
+  font-size: 14;
+  font-weight: normal;
 }
 
 .toast__contanier {
@@ -23,4 +39,8 @@ a {
   align-items: center;
   font-size: 16px;
   font-weight: 500;
+}
+
+li {
+  list-style-type: none;
 }

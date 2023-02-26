@@ -1,50 +1,71 @@
 import { Contacts, User } from "../models/interfaces";
 
-export const createContactList = (users: User[]): Contacts => {
-  const alphabet = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-  ];
+export const alphabet = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
 
+export const createContactList = (users: User[]): Contacts => {
   let contact: Contacts = {};
 
   for (const alpha of alphabet) {
-    contact[alpha] = null;
+    contact[alpha] = [];
   }
 
   for (const user of users) {
-    const firstCharOfLastName = user.name.last[0].toLowerCase()
-    if(alphabet.includes(firstCharOfLastName)) {
-        contact = {
-            ...contact,
-            [firstCharOfLastName]: user
-        }
+    const firstCharOfLastName = user.name.last[0].toLowerCase();
+    if (alphabet.includes(firstCharOfLastName)) {
+      contact = {
+        ...contact,
+        [firstCharOfLastName]: contact[firstCharOfLastName].concat(user),
+      };
     }
   }
 
-  return contact  
+  return contact;
+};
+
+export const generateId = (
+  length: number = 10,
+  {
+    containNumbers = true,
+    containAlphabet = true,
+  }: { containNumbers?: boolean; containAlphabet?: boolean } = {}
+) => {
+  let result = "";
+  let characters = "";
+
+  if (containNumbers) characters += "0123456789";
+  if (containAlphabet)
+    characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+  const charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
 };

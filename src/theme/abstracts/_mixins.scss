@@ -1,0 +1,31 @@
+@mixin box-shadow($horizontal, $vertical, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $horizontal $vertical $blur $color;
+    -moz-box-shadow: inset $horizontal $vertical $blur $color;
+    box-shadow: inset $horizontal $vertical $blur $color;
+  } @else {
+    -webkit-box-shadow: $horizontal $vertical $blur $color;
+    -moz-box-shadow: $horizontal $vertical $blur $color;
+    box-shadow: $horizontal $vertical $blur $color;
+  }
+}
+
+@mixin rounded($radius: 0.5rem) {
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+@mixin customBorder(
+  $top,
+  $right,
+  $bottom,
+  $left,
+  $style,
+  $color
+) {
+  border-top: $top $style $color;
+  border-right: $right $style $color;
+  border-bottom: $bottom $style $color;
+  border-left: $left $style $color;
+}

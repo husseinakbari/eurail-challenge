@@ -16,16 +16,33 @@
   border-radius: 0.5rem;
 }
 
-@mixin customBorder(
-  $top,
-  $right,
-  $bottom,
-  $left,
-  $style,
-  $color
-) {
+@mixin customBorder($top, $right, $bottom, $left, $style, $color) {
   border-top: $top $style $color;
   border-right: $right $style $color;
   border-bottom: $bottom $style $color;
   border-left: $left $style $color;
+}
+
+@mixin grid-col($columnCount: 1, $gap: 0px) {
+  display: grid;
+  column-gap: $gap;
+  grid-template-columns: repeat($columnCount, minmax(0, 1fr));
+}
+
+@mixin grid-col-auto($gap: 0px) {
+  display: grid;
+  column-gap: $gap;
+  grid-auto-flow: column;
+}
+
+@mixin grid-row($rowCount: 1, $gap: 0px) {
+  display: grid;
+  row-gap: $gap;
+  grid-template-rows: repeat($rowCount, minmax(0, 1fr));
+}
+
+@mixin grid-row-auto($gap: 0px) {
+  display: grid;
+  row-gap: $gap;
+  grid-auto-flow: row;
 }

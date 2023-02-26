@@ -1,4 +1,4 @@
-@import "../../theme/main.scss";
+@import "~theme/main.scss";
 
 .screen {
   width: 100%;
@@ -10,12 +10,15 @@
     width: 100%;
     padding: 2rem 0;
     @extend %flex-center;
-    h4 {
-      font-size: 1.5rem;
-    }
   }
 
   main {
-    width: 80%;
+    width: 100%;
+    @include lg {
+      width: 90%;
+    }
+    @include xl {
+      width: 80%;
+    }
   }
 }

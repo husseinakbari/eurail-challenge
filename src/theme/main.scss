@@ -1,5 +1,9 @@
-/* 1. Configuration and helpers */
-@import "abstracts/variables", "abstracts/mixins", "abstracts/extends";
+/* Configuration and helpers */
+@import "abstracts/variables", "abstracts/mixins", "abstracts/extends",
+  "abstracts/breakpoints";
 
-/* 2. Base stuff */
+/* Base stuff */
 @import "base/base";
+
+/* Utilites */
+@import "abstracts/utilities"

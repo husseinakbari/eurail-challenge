@@ -1,17 +1,18 @@
 import { FC, useEffect, useState } from "react";
 import classNames from "classnames";
 
-import { User } from "../../models/interfaces";
-import { generateId } from "../../utils/global";
+import { User } from "~/models/interfaces";
+import { generateFullname, generateId } from "~/utils/global";
 import UserInfo from "../UserInfo";
 import "./styles.scss";
 
 interface TabContentProps {
   users: User[];
   activeTab: string;
+  isLoading: boolean;
 }
 
-const TabContent: FC<TabContentProps> = ({ users, activeTab }) => {
+const TabContent: FC<TabContentProps> = ({ users, activeTab, isLoading }) => {
   const [selectedUserIndex, setSelectedUserIndex] = useState<number>(-1);
 
   const tabContentClassName = classNames("tab-content", {
@@ -22,15 +23,34 @@ const TabContent: FC<TabContentProps> = ({ users, activeTab }) => {
     setSelectedUserIndex(-1);
   }, [activeTab]);
 
+  if (isLoading) {
+    return (
+      <div className="tab-content">
+        <ul className="tab-content__list">
+          {Array(10)
+            .fill("")
+            .map((_) => (
+              <li
+                key={generateId()}
+                className="tab-content__list-item--skeleton"
+              />
+            ))}
+        </ul>
+      </div>
+    );
+  }
+
   return (
     <div className={tabContentClassName}>
       {users.length ? (
         <>
           {selectedUserIndex > -1 && users[selectedUserIndex] && (
-            <UserInfo
-              user={users[selectedUserIndex]}
-              onClose={() => setSelectedUserIndex(-1)}
-            />
+            <div className="tab-content__user-info">
+              <UserInfo
+                user={users[selectedUserIndex]}
+                onClose={() => setSelectedUserIndex(-1)}
+              />
+            </div>
           )}
           <ul className="tab-content__list">
             {users.map((user, index) => (
@@ -41,7 +61,7 @@ const TabContent: FC<TabContentProps> = ({ users, activeTab }) => {
                 })}
                 onClick={() => setSelectedUserIndex(index)}
               >
-                {user.name.first}, {user.name.last}
+                {generateFullname(user)}
               </li>
             ))}
           </ul>

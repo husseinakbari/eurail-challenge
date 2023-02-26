@@ -1,7 +1,9 @@
+import { FC } from "react";
 import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 
-export function Toastify() {
+const Toastify:FC = () => {
   return (
     <ToastContainer
       position="bottom-right"
@@ -17,3 +19,5 @@ export function Toastify() {
     />
   );
 }
+
+export default Toastify

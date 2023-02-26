@@ -69,3 +69,7 @@ export const generateId = (
   }
   return result;
 };
+
+export const generateFullname = (user: User): string => {
+  return `${user.name.first}, ${user.name.last.toUpperCase()}`;
+};

@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 
-import { Contacts } from "~/models/interfaces";
-import { alphabet } from "~/utils/global";
+import { Contacts } from "models/interfaces";
+import { alphabet } from "utils/global";
 import TabContent from "../TabContent";
 import TabItem from "../TabItem";
 import "./style.scss";

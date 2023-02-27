@@ -65,7 +65,9 @@ export interface GetUserListResponse {
   results: User[];
 }
 
-export type Contacts = Record<string, User[]>;
+export type PersonObject = Record<string, User>
+
+export type Contacts = Record<string, PersonObject>;
 
 export interface Info {
   label: string;

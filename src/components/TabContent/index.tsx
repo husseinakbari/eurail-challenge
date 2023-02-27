@@ -10,9 +10,15 @@ interface TabContentProps {
   users: User[];
   activeTab: string;
   isLoading: boolean;
+  searchValue: string;
 }
 
-const TabContent: FC<TabContentProps> = ({ users, activeTab, isLoading }) => {
+const TabContent: FC<TabContentProps> = ({
+  users,
+  activeTab,
+  isLoading,
+  searchValue,
+}) => {
   const [selectedUserIndex, setSelectedUserIndex] = useState<number>(-1);
 
   const tabContentClassName = classNames("tab-content", {
@@ -67,7 +73,9 @@ const TabContent: FC<TabContentProps> = ({ users, activeTab, isLoading }) => {
           </ul>
         </>
       ) : (
-        <p className="tab-content__list--empty">List is empty</p>
+        <p className="tab-content__list--empty">
+          {searchValue ? `No Results for "${searchValue}"` : "List is Empty"}
+        </p>
       )}
     </div>
   );

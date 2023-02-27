@@ -1,0 +1,44 @@
+@import "theme/main.scss";
+
+.formInput {
+  width: 100%;
+  background-color: var(--white-color);
+  height: 2.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--var-grey);
+  padding: 10px;
+  align-items: center;
+  @extend %flex-row;
+  @include md {
+    width: 50%;
+  }
+
+  @include lg {
+    width: 40%;
+  }
+
+  @include xl {
+    width: 30%;
+  }
+
+  &__icon {
+    width: 10%;
+    cursor: pointer;
+  }
+
+  &__input {
+    width: 90%;
+    font-size: $font-size-md;
+    border: none;
+    background-color: transparent;
+
+    &::placeholder {
+      font-size: $font-size-md;
+      line-height: 1rem;
+      color: var(--grey-color);
+    }
+    &:focus-visible {
+      outline: none;
+    }
+  }
+}

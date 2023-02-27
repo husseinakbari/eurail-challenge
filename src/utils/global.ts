@@ -33,19 +33,23 @@ export const createContactList = (users: User[]): Contacts => {
   let contact: Contacts = {};
 
   for (const alpha of alphabet) {
-    contact[alpha] = [];
+    contact[alpha] = {};
   }
 
   for (const user of users) {
     const firstCharOfLastName = user.name.last[0].toLowerCase();
     if (alphabet.includes(firstCharOfLastName)) {
+      const fullname = `${user.name.first},${user.name.last}`;
+
       contact = {
         ...contact,
-        [firstCharOfLastName]: contact[firstCharOfLastName].concat(user),
+        [firstCharOfLastName]: {
+          ...contact[firstCharOfLastName],
+          [fullname]: user,
+        },
       };
     }
   }
-
   return contact;
 };
 

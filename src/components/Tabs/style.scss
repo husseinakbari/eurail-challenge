@@ -2,6 +2,15 @@
 
 .tabs {
   @extend %flex-col;
+  &__search {
+    width: 100%;
+    background-color: var(--background-color);
+    padding: 1rem 1rem 1.54rem 1rem;
+    border: 1px solid var(--grey-color);
+    margin-bottom: -14px;
+    border-radius: 10px
+  }
+
   &__bloc {
     @include grid-col-auto;
     overflow-x: scroll;

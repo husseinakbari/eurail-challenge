@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import classNames from "classnames";
 
-import { User } from "~/models/interfaces";
-import { generateFullname, generateId } from "~/utils/global";
+import { User } from "models/interfaces";
+import { generateFullname, generateId } from "utils/global";
 import UserInfo from "../UserInfo";
 import "./styles.scss";
 

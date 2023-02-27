@@ -1,8 +1,8 @@
 import { FC, useMemo } from "react";
 
-import { Info, User } from "~/models/interfaces";
-import { generateId } from "~/utils/global";
-import { CloseIcon } from "~/components/Icons";
+import { Info, User } from "models/interfaces";
+import { generateId } from "utils/global";
+import { CloseIcon } from "components/Icons";
 
 import "./styles.scss";
 

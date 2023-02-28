@@ -1,4 +1,4 @@
-import { FC, ForwardedRef, forwardRef, InputHTMLAttributes } from "react";
+import { FC, InputHTMLAttributes } from "react";
 
 import { CloseIcon } from "components/Icons";
 import "./styles.scss";
@@ -12,7 +12,7 @@ const FormInput: FC<FormInputProps> = ({ onClear, ...props }) => {
     <div className="formInput">
       <input autoComplete="off" className="formInput__input" {...props} />
       {props.value && (
-        <CloseIcon className="formInput__icon" onClick={onClear} />
+        <CloseIcon data-testid="close-button" className="formInput__icon" onClick={onClear} />
       )}
     </div>
   );

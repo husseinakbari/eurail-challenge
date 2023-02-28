@@ -46,6 +46,7 @@ const UserInfo: FC<UserInfoProps> = ({ user, onClose }) => {
   return (
     <div className="user-info">
       <CloseIcon
+        data-testid="close-button"
         className="user-info__close-icon"
         width={30}
         height={30}
@@ -67,7 +68,10 @@ const UserInfo: FC<UserInfoProps> = ({ user, onClose }) => {
             <span className="user-info__content__section__label">
               {item.label}
             </span>
-            <span className="user-info__content__section__value">
+            <span
+              data-testid={item.label}
+              className="user-info__content__section__value"
+            >
               {item.value}
             </span>
           </div>
@@ -75,7 +79,7 @@ const UserInfo: FC<UserInfoProps> = ({ user, onClose }) => {
       </div>
       <div className="user-info__username">
         <span className="user-info__username__label">USERNAME</span>
-        <span>{user.login.username}</span>
+        <span data-testid="username">{user.login.username}</span>
       </div>
     </div>
   );

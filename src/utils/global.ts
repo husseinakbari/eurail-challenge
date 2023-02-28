@@ -1,4 +1,5 @@
 import { Contacts, User } from "../models/interfaces";
+import network from "./network";
 
 export const alphabet = [
   "a",
@@ -31,6 +32,10 @@ export const alphabet = [
 
 export const createContactList = (users: User[]): Contacts => {
   let contact: Contacts = {};
+
+  if(!users.length) {
+    return contact
+  }
 
   for (const alpha of alphabet) {
     contact[alpha] = {};
@@ -76,4 +81,18 @@ export const generateId = (
 
 export const generateFullname = (user: User): string => {
   return `${user.name.first}, ${user.name.last.toUpperCase()}`;
+};
+
+export const fetchMockUsers = async (): Promise<User[]> => {
+  const response = await network
+    .get("https://randomuser.me/api")
+    .then((res) => res.data);
+  return response.results;
+};
+
+export const fetchMockContact = async (): Promise<Contacts> => {
+  const users = await fetchMockUsers();
+  const contactList = createContactList(users);
+
+  return contactList;
 };

@@ -64,6 +64,7 @@ const Tabs: FC<TabsProps> = ({ contacts, isLoading }) => {
     <div className="tabs">
       <div className="tabs__search">
         <FormInput
+          name="search"
           placeholder="Search"
           disabled={isLoading}
           value={searchValue}
@@ -87,6 +88,7 @@ const Tabs: FC<TabsProps> = ({ contacts, isLoading }) => {
         </ul>
       ) : null}
       <TabContent
+        data-testid="tab-content"
         users={
           contacts
             ? searchValue
@@ -104,7 +106,7 @@ const Tabs: FC<TabsProps> = ({ contacts, isLoading }) => {
 
 const MockTabitem: FC = () => {
   return (
-    <div className="tabs__bloc">
+    <div data-testid="mock-tab-item" className="tabs__bloc">
       {alphabet.map((key) => (
         <TabItem key={key} label={key} count={null} />
       ))}

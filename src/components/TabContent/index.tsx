@@ -31,7 +31,7 @@ const TabContent: FC<TabContentProps> = ({
 
   if (isLoading) {
     return (
-      <div className="tab-content">
+      <div data-testid="tab-content-skeleton" className="tab-content">
         <ul className="tab-content__list">
           {Array(10)
             .fill("")

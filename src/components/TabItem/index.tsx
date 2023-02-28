@@ -18,13 +18,13 @@ const TabItem: FC<TabItemProps> = ({
 }) => {
   const tabItemClassNames = classNames("tabItem", {
     "tabItem--active": isActive,
-    "tabItem--disable": count === 0,
+    "tabItem--disable": !count,
   });
 
   return (
     <li className={tabItemClassNames} onClick={() => onClick && onClick(label)}>
-      <span className="tabItem__label">{label}</span>
-      <span className="tabItem__count">{count}</span>
+      <span data-testid="tabItem-label" className="tabItem__label">{label}</span>
+      <span data-testid="tabItem-count" className="tabItem__count">{count}</span>
     </li>
   );
 };

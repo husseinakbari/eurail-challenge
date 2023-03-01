@@ -29,6 +29,10 @@ const TabContent: FC<TabContentProps> = ({
     setSelectedUserIndex(-1);
   }, [activeTab]);
 
+  useEffect(() => {
+    setSelectedUserIndex(-1)
+  }, [searchValue])
+
   if (isLoading) {
     return (
       <div data-testid="tab-content-skeleton" className="tab-content">

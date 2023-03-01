@@ -33,6 +33,7 @@ const TabContent: FC<TabContentProps> = ({
     setSelectedUserIndex(-1)
   }, [searchValue])
 
+  // Show skeleton when loading is true
   if (isLoading) {
     return (
       <div data-testid="tab-content-skeleton" className="tab-content">

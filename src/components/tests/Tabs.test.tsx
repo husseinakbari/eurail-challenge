@@ -24,14 +24,4 @@ describe("Tabs component", () => {
     expect(getByText("c")).toBeInTheDocument();
     expect(getByText("h")).toBeInTheDocument();
   });
-
-//   it("renders the tab content based on the active tab and search value", async () => {
-//     const contacts = await fetchMockContact();
-//     const { getByTestId, getByText, getByPlaceholderText } = render(<Tabs contacts={contacts} isLoading={false} />);
-
-//     fireEvent.click(getByTestId("tabItem-label")); // click on the "b" tab
-//     expect(getByTestId("tab-content")).toHaveTextContent("user3@example.com");
-//     fireEvent.change(getByPlaceholderText("Search"), { target: { value: "user1" } }); // search for "user1"
-//     expect(getByTestId("tab-content")).toHaveTextContent("user1@example.com");
-//   });
 });

@@ -32,10 +32,13 @@ npx serve build/
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 ### `Deploy`
+Before running the deploy command, switch to the `deploy` branch. Because deployment has a different config at package.json file ("homepage").
 ```
+git checkout deploy
+
 yarn deploy
 ```
-Deploy the project on GitHub by running this command. This feature is implemented using [Github page](https://pages.github.com/).\
+This feature is implemented using [Github page](https://pages.github.com/).
 See the live version of production in this [Link](https://husseinakbari.github.io/eurail-challenge/)
 ### `Eject`
 ```

@@ -29,17 +29,15 @@ describe("UserInfo component", () => {
     );
   });
 
-  it("renders an image with the correct attributes", async () => {
+  it("renders a lazy image and display placeholder", async () => {
     const users = await fetchMockUsers();
     const user = users[0];
-    render(<UserInfo user={user} onClose={onClose} />);
-
-    const image = screen.getByRole("img");
-    expect(image).toHaveAttribute("src", user.picture.large);
-    expect(image).toHaveAttribute(
-      "alt",
-      `${user.name.first} ${user.name.last}`
+    const { queryByRole, getByTestId } = render(
+      <UserInfo user={user} onClose={onClose} />
     );
+
+    expect(queryByRole("img")).toBeNull();
+    expect(getByTestId("image-placeholder")).toBeInTheDocument();
   });
 
   it("calls onClose when the close button is clicked", async () => {

@@ -5,6 +5,7 @@ import { generateId } from "utils/global";
 import { CloseIcon } from "components/Icons";
 
 import "./styles.scss";
+import LazyImage from "components/LazyImage";
 
 interface UserInfoProps {
   user: User;
@@ -52,11 +53,10 @@ const UserInfo: FC<UserInfoProps> = ({ user, onClose }) => {
         height={30}
         onClick={onClose}
       />
-      <img
+      <LazyImage
+        className="user-info__picture"
         src={user.picture.large}
         alt={`${user.name.first} ${user.name.last}`}
-        className="user-info__picture"
-        loading="lazy"
       />
       <div className="user-info__content">
         <h4>

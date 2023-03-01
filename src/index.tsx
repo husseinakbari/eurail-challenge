@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import "./theme";
 import App from "./containers/App";
 import reportWebVitals from "./reportWebVitals";
 import Toastify from "components/Toastify";
+import "theme/main.scss";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

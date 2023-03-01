@@ -1,8 +1,7 @@
 {
   "name": "eurail-challenge",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "private": true,
-  "homepage": "https://husseinakbari.github.io/eurail-challenge",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

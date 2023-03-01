@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import "./styles.scss";
 
 import Tabs from "components/Tabs";
 import { contactServices } from "services/contactServices";
 import { createContactList } from "utils/global";
 import handleError from "utils/handleError";
 import { Contacts } from "models/interfaces";
+import "./styles.scss";
 
 
 function App() {

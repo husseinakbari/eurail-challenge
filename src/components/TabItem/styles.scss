@@ -1,26 +1,26 @@
 @import "theme/helper.scss";
 
 .tabItem {
-  width: 45px;
-  height: 35px;
+  width: 3.75rem;
+  height: 2.18rem;
   background-color: var(--background-color);
   cursor: pointer;
   position: relative;
   border: 1px solid var(--grey-color);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 0.625rem;
+  border-top-right-radius: 0.625rem;
   @extend %flex-center;
   @include breakpoint(1500px) {
     width: auto;
   }
 
   &__label {
-    font-size: 18px;
+    font-size: $font-size-lg;
     font-weight: 600;
   }
 
   &__count {
-    font-size: 10px;
+    font-size: 0.625rem;
     position: absolute;
     right: 2px;
     bottom: 2px;

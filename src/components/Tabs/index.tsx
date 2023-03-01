@@ -104,6 +104,7 @@ const Tabs: FC<TabsProps> = ({ contacts, isLoading }) => {
   );
 };
 
+// Render mock tab item when loading is true or search value exist
 const MockTabitem: FC = () => {
   return (
     <div data-testid="mock-tab-item" className="tabs__bloc">

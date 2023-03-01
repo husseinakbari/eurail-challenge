@@ -13,6 +13,7 @@ const LazyImage: FC<ImgHTMLAttributes<HTMLImageElement>> = ({
 
   useEffect(() => {
     if (src) {
+      // Wait till image load
       let img = new Image();
       img.src = src;
       setImageSrc("");

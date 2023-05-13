@@ -1,40 +1,40 @@
-import { Contacts, User } from "../models/interfaces";
-import network from "./network";
+import { Contacts, User } from '../models/interfaces';
+import network from './network';
 
 export const alphabet = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
+  'a',
+  'b',
+  'c',
+  'd',
+  'e',
+  'f',
+  'g',
+  'h',
+  'i',
+  'j',
+  'k',
+  'l',
+  'm',
+  'n',
+  'o',
+  'p',
+  'q',
+  'r',
+  's',
+  't',
+  'u',
+  'v',
+  'w',
+  'x',
+  'y',
+  'z',
 ];
 
 export const createContactList = (users: User[]): Contacts => {
   let contact: Contacts = {};
 
-  if(!users.length) {
-    return contact
+  if (!users.length) {
+    return contact;
   }
 
   for (const alpha of alphabet) {
@@ -65,12 +65,12 @@ export const generateId = (
     containAlphabet = true,
   }: { containNumbers?: boolean; containAlphabet?: boolean } = {}
 ) => {
-  let result = "";
-  let characters = "";
+  let result = '';
+  let characters = '';
 
-  if (containNumbers) characters += "0123456789";
+  if (containNumbers) characters += '0123456789';
   if (containAlphabet)
-    characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    characters += 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
   const charactersLength = characters.length;
   for (var i = 0; i < length; i++) {
@@ -85,7 +85,7 @@ export const generateFullname = (user: User): string => {
 
 export const fetchMockUsers = async (): Promise<User[]> => {
   const response = await network
-    .get("https://randomuser.me/api")
+    .get('https://randomuser.me/api')
     .then((res) => res.data);
   return response.results;
 };

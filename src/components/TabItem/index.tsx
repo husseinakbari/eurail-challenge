@@ -1,7 +1,6 @@
-import { FC } from "react";
-import classNames from "classnames";
+import classNames from 'classnames';
 
-import "./styles.scss";
+import './styles.scss';
 
 interface TabItemProps {
   label: string;
@@ -10,23 +9,34 @@ interface TabItemProps {
   onClick?: (key: string) => void;
 }
 
-const TabItem: FC<TabItemProps> = ({
+function TabItem({
   label,
   count,
   isActive = false,
   onClick,
-}) => {
-  const tabItemClassNames = classNames("tabItem", {
-    "tabItem--active": isActive,
-    "tabItem--disable": !count,
+}: TabItemProps) {
+  const tabItemClassNames = classNames('tabItem', {
+    'tabItem--active': isActive,
+    'tabItem--disable': !count,
   });
 
   return (
-    <li className={tabItemClassNames} onClick={() => onClick && onClick(label)}>
-      <span data-testid="tabItem-label" className="tabItem__label">{label}</span>
-      <span data-testid="tabItem-count" className="tabItem__count">{count}</span>
-    </li>
+    <button type="button" onClick={() => onClick && onClick(label)}>
+      <li className={tabItemClassNames}>
+        <span data-testid="tabItem-label" className="tabItem__label">
+          {label}
+        </span>
+        <span data-testid="tabItem-count" className="tabItem__count">
+          {count}
+        </span>
+      </li>
+    </button>
   );
+}
+
+TabItem.defaultProps = {
+  isActive: false,
+  onClick: undefined,
 };
 
 export default TabItem;

@@ -1,29 +1,30 @@
-import { FC, ImgHTMLAttributes, useEffect, useState } from "react";
-import classNames from "classnames";
-import { ImageIcon } from "components/Icons";
-import "./styles.scss";
+/* eslint-disable react/jsx-props-no-spreading */
+import { ImgHTMLAttributes, useEffect, useState } from 'react';
+import classNames from 'classnames';
+import { ImageIcon } from 'components/Icons';
+import './styles.scss';
 
-const LazyImage: FC<ImgHTMLAttributes<HTMLImageElement>> = ({
+function LazyImage({
   src,
   alt,
   className,
   ...props
-}) => {
-  const [imageSrc, setImageSrc] = useState("");
+}: ImgHTMLAttributes<HTMLImageElement>) {
+  const [imageSrc, setImageSrc] = useState('');
 
   useEffect(() => {
     if (src) {
       // Wait till image load
-      let img = new Image();
+      const img = new Image();
       img.src = src;
-      setImageSrc("");
+      setImageSrc('');
       img.onload = () => {
         setImageSrc(src);
       };
     }
   }, [src]);
 
-  const lazyImageClassName = classNames("lazyImage", className);
+  const lazyImageClassName = classNames('lazyImage', className);
 
   return (
     <div className={lazyImageClassName}>
@@ -34,6 +35,6 @@ const LazyImage: FC<ImgHTMLAttributes<HTMLImageElement>> = ({
       )}
     </div>
   );
-};
+}
 
 export default LazyImage;

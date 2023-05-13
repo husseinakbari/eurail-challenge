@@ -1,10 +1,10 @@
-import { FC, useEffect, useState } from "react";
-import classNames from "classnames";
+import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 
-import { User } from "models/interfaces";
-import { generateFullname, generateId } from "utils/global";
-import UserInfo from "../UserInfo";
-import "./styles.scss";
+import { User } from 'models/interfaces';
+import { generateFullname, generateId } from 'utils/global';
+import UserInfo from 'components/UserInfo';
+import './styles.scss';
 
 interface TabContentProps {
   users: User[];
@@ -13,16 +13,16 @@ interface TabContentProps {
   searchValue: string;
 }
 
-const TabContent: FC<TabContentProps> = ({
+function TabContent({
   users,
   activeTab,
   isLoading,
   searchValue,
-}) => {
+}: TabContentProps) {
   const [selectedUserIndex, setSelectedUserIndex] = useState<number>(-1);
 
-  const tabContentClassName = classNames("tab-content", {
-    "tab-content--grided": selectedUserIndex > -1,
+  const tabContentClassName = classNames('tab-content', {
+    'tab-content--grided': selectedUserIndex > -1,
   });
 
   useEffect(() => {
@@ -30,8 +30,8 @@ const TabContent: FC<TabContentProps> = ({
   }, [activeTab]);
 
   useEffect(() => {
-    setSelectedUserIndex(-1)
-  }, [searchValue])
+    setSelectedUserIndex(-1);
+  }, [searchValue]);
 
   // Show skeleton when loading is true
   if (isLoading) {
@@ -39,8 +39,8 @@ const TabContent: FC<TabContentProps> = ({
       <div data-testid="tab-content-skeleton" className="tab-content">
         <ul className="tab-content__list">
           {Array(10)
-            .fill("")
-            .map((_) => (
+            .fill('')
+            .map(() => (
               <li
                 key={generateId()}
                 className="tab-content__list-item--skeleton"
@@ -65,25 +65,31 @@ const TabContent: FC<TabContentProps> = ({
           )}
           <ul className="tab-content__list">
             {users.map((user, index) => (
-              <li
-                key={generateId()}
-                className={classNames("tab-content__list-item", {
-                  "tab-content__list-item--active": selectedUserIndex === index,
-                })}
-                onClick={() => setSelectedUserIndex(index)}
-              >
-                {generateFullname(user)}
+              <li key={generateId()}>
+                <button
+                  type="button"
+                  onClick={() => setSelectedUserIndex(index)}
+                >
+                  <span
+                    className={classNames('tab-content__list-item', {
+                      'tab-content__list-item--active':
+                        selectedUserIndex === index,
+                    })}
+                  >
+                    {generateFullname(user)}
+                  </span>
+                </button>
               </li>
             ))}
           </ul>
         </>
       ) : (
         <p className="tab-content__list--empty">
-          {searchValue ? `No Results for "${searchValue}"` : "List is Empty"}
+          {searchValue ? `No Results for "${searchValue}"` : 'List is Empty'}
         </p>
       )}
     </div>
   );
-};
+}
 
 export default TabContent;
